@@ -16,7 +16,6 @@ PRINTF=/usr/bin/printf;
 
 CHMOD=/bin/chmod;
 MOUNT=/bin/mount;
-#MOUNT=/usr/bin/sshfs;
 UMOUNT=/bin/umount;
 RM=/bin/rm;
 MV=/bin/mv;
@@ -45,10 +44,6 @@ snapshot_machine(){
 	# attempt to remount the RW mount point as RW; else abort
 	if [ "$MACHINE" != "localhost" ] ; then
 		$PRINTF '%s: Mounting device rw \n' "$($DATE '+%Y-%m-%d %H:%M')"
-#		if (!($MOUNT backup@$MOUNT_DEVICE $SNAPSHOT_RW -C -o nonempty)); then
-#			$ECHO "snapshot: could not mount $MOUNT_DEVICE";
-#	        	exit 1
-#		fi
 
 		$MOUNT -o remount,rw,nfsvers=3 $MOUNT_DEVICE $SNAPSHOT_RW ;
 		if (( $? )); then
@@ -108,7 +103,6 @@ snapshot_machine(){
 	# now remount the RW snapshot mountpoint as readonly
 	if [ "$MACHINE" != "localhost" ] ; then
 		$MOUNT -o remount,ro,nfsvers=3 $MOUNT_DEVICE $SNAPSHOT_RW ;
-#		fusermount -u $SNAPSHOT_RW;
 		if (( $? )); then
 		{
 			$ECHO "snapshot: could not unmount $BASE_LOCATION";

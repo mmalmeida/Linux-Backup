@@ -9,10 +9,6 @@
 /etc/**
 /srv/
 /srv/**
-/var/
-/var/lib/
-/var/lib/postgresql/
-/var/lib/postgresql/**
 - *
 
 
