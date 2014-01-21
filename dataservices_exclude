@@ -1,5 +1,7 @@
 #rsync script exclude file
 **/.evolution/mail/imap
+**/.thunderbird/*/ImapMail
+**/workspace*/**/target
 **/.phoenix/default/*/Cache/
 **/.thumbnails/
 **/Desktop/Trash/
